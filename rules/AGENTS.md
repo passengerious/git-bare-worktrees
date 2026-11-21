@@ -19,4 +19,4 @@ These rules apply to any repository using the Git bare-repository architecture l
 - **Single Source of Truth:** `main/` represents the trunk and serves as the baseline for shared dependencies and environment configs.
 - **Dependency & Env Mirroring:** New worktrees under `wt/<name>` should mirror root `node_modules` and subpackage dependencies, as well as local `.env` files from `main/`.
 - **Worktree Cleanup:** Worktree directories must be cleanly unlinked and removed when work is merged or abandoned. Branches must only be deleted after confirming merge status or explicit user authorization.
-- **Tooling:** Use the `git-bare-worktrees` skill scripts (`bare-wt-init.sh`, `agent-init.sh`, `setup-bare-wt-hooks.sh`, `worktree-add.sh`, and `worktree-drop.sh`) to bootstrap repositories, configure shared `.bare/hooks`, and provision or decommission worktrees reliably.
+- **Tooling:** Use the `bare-worktree-workflow` skill scripts (`bare-wt-init.sh`, `agent-init.sh`, `setup-bare-wt-hooks.sh`, `worktree-add.sh`, and `worktree-drop.sh`) to bootstrap repositories, configure shared `.bare/hooks`, and provision or decommission worktrees reliably.

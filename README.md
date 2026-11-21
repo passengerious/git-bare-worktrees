@@ -35,7 +35,7 @@ Enforces core bare-worktree invariants whenever the plugin is active:
 - Treat `main/` as the Single Source of Truth for baseline dependencies and `.env` configurations.
 - Require verified merge status or explicit authorization before deleting branches or dirty worktrees.
 
-### 2. Progressive-Disclosure Skill (`skills/git-bare-worktrees/SKILL.md`)
+### 2. Progressive-Disclosure Skill (`skills/bare-worktree-workflow/SKILL.md`)
 Comprehensive 14-section operational runbook covering:
 - Bare repository discovery and verification (`--git-common-dir`, `--is-bare-repository`).
 - Standard feature worktree creation and stacked branch creation (`parent_base_sha` boundary tracking).

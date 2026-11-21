@@ -1,5 +1,5 @@
 ---
-name: git-bare-worktrees
+name: bare-worktree-workflow
 description: >
   Manage standard and stacked Git worktrees in bare-repository projects.
   Use when creating feature worktrees, provisioning self-subagent workspaces,
