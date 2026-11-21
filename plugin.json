@@ -1,0 +1,20 @@
+{
+  "name": "git-bare-worktrees",
+  "displayName": "Git Bare Worktrees Manager",
+  "version": "1.0.0",
+  "description": "Standardized and stacked Git worktree workflow manager for bare repositories (.bare, main/, wt/<name>).",
+  "author": {
+    "name": "Dan"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/passengerious/git-bare-worktrees.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "git",
+    "worktrees",
+    "bare-repo",
+    "workflow"
+  ]
+}
