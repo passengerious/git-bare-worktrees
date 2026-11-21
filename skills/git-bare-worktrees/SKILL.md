@@ -108,13 +108,13 @@ If verification fails, stop without attempting speculative recovery.
 
 ## 4. Helper Automation Scripts
 
-The plugin bundles five zero-dependency Bash scripts in `./scripts/` covering the full bare-worktree lifecycle:
+The plugin bundles five zero-dependency Bash scripts in `../../scripts/` covering the full bare-worktree lifecycle:
 
-- **Initialize Bare Worktree Repo:** [`bare-wt-init.sh`](./scripts/bare-wt-init.sh) — Bootstraps a new bare repository (`.bare/`, `.git` pointer, `main/` worktree, and `wt/` directory) in an empty project directory.
-- **Initialize Agent Instructions:** [`agent-init.sh`](./scripts/agent-init.sh) — Idempotently creates or appends core agent safety and worktree rules to `main/AGENTS.md` after verifying bare-worktree Git metadata.
-- **Configure Shared Hooks & CI Wizard:** [`setup-bare-wt-hooks.sh`](./scripts/setup-bare-wt-hooks.sh) — Interactive wizard that installs shared `pre-commit` (whitespace/conflict check + optional Gitleaks) and `pre-push` (Python Ruff/pytest, TypeScript/pnpm/Turbo typecheck & tests, custom schema checker) into `.bare/hooks/` via `core.hooksPath`, plus an optional GitHub Actions workflow.
-- **Add Feature Worktree:** [`worktree-add.sh`](./scripts/worktree-add.sh) `<name> [base-branch] [branch-name]` — Provisions `wt/<name>`, mirrors root `node_modules` safely for pnpm v12+, symlinks subpackage `node_modules`, copies untracked `.env`/`.env.local` files from `main/`, and runs optional post-add hooks.
-- **Drop Feature Worktree:** [`worktree-drop.sh`](./scripts/worktree-drop.sh) `<name> [--delete-branch|-d] [--force|-f]` — Verifies worktree cleanliness, unlinks mirrored `node_modules` and untracked `.env` files, and safely removes the worktree (refusing destructive removal or unmerged branch deletion unless `--force` is explicitly authorized).
+- **Initialize Bare Worktree Repo:** [`bare-wt-init.sh`](../../scripts/bare-wt-init.sh) — Bootstraps a new bare repository (`.bare/`, `.git` pointer, `main/` worktree, and `wt/` directory) in an empty project directory.
+- **Initialize Agent Instructions:** [`agent-init.sh`](../../scripts/agent-init.sh) — Idempotently creates or appends core agent safety and worktree rules to `main/AGENTS.md` after verifying bare-worktree Git metadata.
+- **Configure Shared Hooks & CI Wizard:** [`setup-bare-wt-hooks.sh`](../../scripts/setup-bare-wt-hooks.sh) — Interactive wizard that installs shared `pre-commit` (whitespace/conflict check + optional Gitleaks) and `pre-push` (Python Ruff/pytest, TypeScript/pnpm/Turbo typecheck & tests, custom schema checker) into `.bare/hooks/` via `core.hooksPath`, plus an optional GitHub Actions workflow.
+- **Add Feature Worktree:** [`worktree-add.sh`](../../scripts/worktree-add.sh) `<name> [base-branch] [branch-name]` — Provisions `wt/<name>`, mirrors root `node_modules` safely for pnpm v12+, symlinks subpackage `node_modules`, copies untracked `.env`/`.env.local` files from `main/`, and runs optional post-add hooks.
+- **Drop Feature Worktree:** [`worktree-drop.sh`](../../scripts/worktree-drop.sh) `<name> [--delete-branch|-d] [--force|-f]` — Verifies worktree cleanliness, unlinks mirrored `node_modules` and untracked `.env` files, and safely removes the worktree (refusing destructive removal or unmerged branch deletion unless `--force` is explicitly authorized).
 
 ## 5. Standard Feature Worktree Creation
 

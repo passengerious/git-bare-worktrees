@@ -43,15 +43,15 @@ Comprehensive 14-section operational runbook covering:
 - Parent update reconciliation (`git rebase --onto`) and parent squash-merge reconciliation.
 - Safe conflict recovery, `--force-with-lease` push leases, and verified cleanup.
 
-### 3. Five Zero-Dependency Lifecycle Scripts (`skills/git-bare-worktrees/scripts/`)
+### 3. Five Zero-Dependency Lifecycle Scripts (`scripts/`)
 
 | Script | Purpose |
 | :--- | :--- |
-| [`bare-wt-init.sh`](./skills/git-bare-worktrees/scripts/bare-wt-init.sh) | Initializes a brand-new bare worktree project (`.bare/`, `.git`, `main/`, `wt/`) in an empty directory with an initial commit. |
-| [`agent-init.sh`](./skills/git-bare-worktrees/scripts/agent-init.sh) | Verifies bare-worktree metadata and idempotently initializes or appends `## Core Rules for Agents` in `main/AGENTS.md`. |
-| [`setup-bare-wt-hooks.sh`](./skills/git-bare-worktrees/scripts/setup-bare-wt-hooks.sh) | Interactive wizard that installs shared `pre-commit` (whitespace/conflict check + Gitleaks) and `pre-push` (Python Ruff/pytest, TypeScript/pnpm/Turbo typecheck & tests, custom schema checker) into `.bare/hooks/` and optionally generates `main/.github/workflows/git-guards.yml`. |
-| [`worktree-add.sh`](./skills/git-bare-worktrees/scripts/worktree-add.sh) | Creates `wt/<name>` from a base ref or existing branch, mirrors root `node_modules` safely for pnpm v12+, symlinks nested monorepo `node_modules`, copies local `.env`/`.env.local` files from `main/`, and runs optional post-add hooks. |
-| [`worktree-drop.sh`](./skills/git-bare-worktrees/scripts/worktree-drop.sh) | Verifies worktree cleanliness, unlinks mirrored `node_modules` and untracked `.env` files, and removes `wt/<name>`. Supports `--delete-branch` (`-d`) and `--force` (`-f`). |
+| [`bare-wt-init.sh`](./scripts/bare-wt-init.sh) | Initializes a brand-new bare worktree project (`.bare/`, `.git`, `main/`, `wt/`) in an empty directory with an initial commit. |
+| [`agent-init.sh`](./scripts/agent-init.sh) | Verifies bare-worktree metadata and idempotently initializes or appends `## Core Rules for Agents` in `main/AGENTS.md`. |
+| [`setup-bare-wt-hooks.sh`](./scripts/setup-bare-wt-hooks.sh) | Interactive wizard that installs shared `pre-commit` (whitespace/conflict check + Gitleaks) and `pre-push` (Python Ruff/pytest, TypeScript/pnpm/Turbo typecheck & tests, custom schema checker) into `.bare/hooks/` and optionally generates `main/.github/workflows/git-guards.yml`. |
+| [`worktree-add.sh`](./scripts/worktree-add.sh) | Creates `wt/<name>` from a base ref or existing branch, mirrors root `node_modules` safely for pnpm v12+, symlinks nested monorepo `node_modules`, copies local `.env`/`.env.local` files from `main/`, and runs optional post-add hooks. |
+| [`worktree-drop.sh`](./scripts/worktree-drop.sh) | Verifies worktree cleanliness, unlinks mirrored `node_modules` and untracked `.env` files, and removes `wt/<name>`. Supports `--delete-branch` (`-d`) and `--force` (`-f`). |
 
 ---
 
@@ -76,20 +76,20 @@ git clone https://github.com/passengerious/git-bare-worktrees.git .agents/plugin
 ```bash
 # 1. Bootstrap a new bare-worktree repository in an empty folder
 mkdir my-project && cd my-project
-bash ~/.gemini/config/plugins/git-bare-worktrees/skills/git-bare-worktrees/scripts/bare-wt-init.sh
+bash ~/.gemini/config/plugins/git-bare-worktrees/scripts/bare-wt-init.sh
 
 # 2. Initialize Core Agent Rules in main/AGENTS.md
-bash ~/.gemini/config/plugins/git-bare-worktrees/skills/git-bare-worktrees/scripts/agent-init.sh
+bash ~/.gemini/config/plugins/git-bare-worktrees/scripts/agent-init.sh
 
 # 3. (Optional) Configure shared pre-commit & pre-push hooks across all worktrees
-bash ~/.gemini/config/plugins/git-bare-worktrees/skills/git-bare-worktrees/scripts/setup-bare-wt-hooks.sh
+bash ~/.gemini/config/plugins/git-bare-worktrees/scripts/setup-bare-wt-hooks.sh
 
 # 4. Provision a feature worktree (from inside main/ or any worktree)
 cd main
-bash ~/.gemini/config/plugins/git-bare-worktrees/skills/git-bare-worktrees/scripts/worktree-add.sh auth-flow main feat/auth-flow
+bash ~/.gemini/config/plugins/git-bare-worktrees/scripts/worktree-add.sh auth-flow main feat/auth-flow
 
 # 5. Safely tear down the worktree once merged
-bash ~/.gemini/config/plugins/git-bare-worktrees/skills/git-bare-worktrees/scripts/worktree-drop.sh auth-flow --delete-branch
+bash ~/.gemini/config/plugins/git-bare-worktrees/scripts/worktree-drop.sh auth-flow --delete-branch
 ```
 
 ---
